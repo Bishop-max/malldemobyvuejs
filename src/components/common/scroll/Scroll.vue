@@ -68,6 +68,11 @@
       //scroll结束上拉加载
       finishPullUp(){
         this.scroll && this.scroll.finishPullUp()
+      },
+
+      //scroll当前滚动的高度y
+      getScrollY(){
+        return this.scroll ? this.scroll.y : 0
       }
     }
   }

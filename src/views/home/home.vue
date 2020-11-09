@@ -63,7 +63,9 @@
         //tabcontrol距离顶部的位置
         tabOffsetTop: 0,
         //tabcontrol吸顶按钮是否显示
-        isTabFixed:false
+        isTabFixed:false,
+        //记录当前滚动的高度y
+        saveY:0
       }
     },
     components:{
@@ -100,6 +102,17 @@
           this.$refs.scroll.refresh()
         },500))
 
+      },
+      //让Home保持原来的状态
+      //activated()组件处于活跃时调用
+      activated(){
+          this.$refs.scroll.scrollTo(0,this.saveY,0)
+          this.$refs.Scroll.refresh()
+      },
+      //deactivated()组件处于不活跃状态下调用
+      deactivated(){
+        //保存当前滚动的高度
+          this.saveY = this.$refs.scroll.getScrollY()
       },
     methods:{
       /**
