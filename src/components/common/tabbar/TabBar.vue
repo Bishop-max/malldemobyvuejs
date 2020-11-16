@@ -1,5 +1,5 @@
 <template>
-  <div id="tab-bar">
+  <div class="tab-bar">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,7 @@
 </script>
 
 <style scoped>
-  #tab-bar {
+  .tab-bar {
     /* 本身的样式 */
     background-color: #f6f6f6;
     height: 49px;

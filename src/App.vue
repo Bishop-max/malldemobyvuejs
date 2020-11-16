@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <!-- keep-alive exclude中的组件要指定name属性 -->
+    <keep-alive exclude="Detail">
       <router-view/>
     </keep-alive>
 		<MainTabBar></MainTabBar>
@@ -18,6 +19,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
  @import url("assets/css/base.css");
 </style>

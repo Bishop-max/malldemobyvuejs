@@ -40,13 +40,19 @@
   import BackTop from '@/components/content/backtop/BackTop'
 
   import {getHomeMultiData,getHomeGoods} from 'network/home'
+
+  /**
+   * 工具函数debounce，mixin
+   */
   import {debounce} from 'utils/utils'
+  //import {itemListenerMixin} from 'utils/mixin'
 
   import HomeSwiper from './homeComps/HomeSwiper'
   import RecommendView from './homeComps/RecommendView'
   import FeatureView from './homeComps/FeatureView'
 
   export default {
+    //mixins:[itemListenerMixin],
     data(){
       return {
         banner:null,
@@ -65,7 +71,9 @@
         //tabcontrol吸顶按钮是否显示
         isTabFixed:false,
         //记录当前滚动的高度y
-        saveY:0
+        saveY:0,
+        //首页事件总线事件监听
+        // itemImgListener:null
       }
     },
     components:{
@@ -98,21 +106,27 @@
         //   //刷新当前内容高度
         //   this.$refs.scroll.refresh()
         // })
-        this.$bus.$on('imgLoad',debounce(() =>{
+        
+        this.$bus.$on('homeImgLoad',debounce(() =>{
           this.$refs.scroll.refresh()
-        },500))
+        },300))
 
       },
       //让Home保持原来的状态
       //activated()组件处于活跃时调用
       activated(){
+        console.log('active')
           this.$refs.scroll.scrollTo(0,this.saveY,0)
-          this.$refs.Scroll.refresh()
+          this.$refs.scroll.refresh()
       },
       //deactivated()组件处于不活跃状态下调用
       deactivated(){
-        //保存当前滚动的高度
+        //1.保存当前滚动的高度
           this.saveY = this.$refs.scroll.getScrollY()
+
+        //取消全局监听
+        //this.$bus.$off('function name',function)
+        // this.$bus.$off('imgLoad',this.homeGoodlistListener)
       },
     methods:{
       /**

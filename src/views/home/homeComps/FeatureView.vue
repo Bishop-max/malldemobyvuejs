@@ -12,7 +12,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .feature-view img{
     width: 100%;
   }

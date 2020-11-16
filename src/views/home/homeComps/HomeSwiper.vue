@@ -11,8 +11,10 @@
 <script>
   import {Swiper, SwiperItem} from '@/components/common/swiper/index'
   export default {
-    data:{
-      isLoad:false
+    data(){
+      return{
+        isLoad:false
+      }
     },
     props:{
       banner:{
@@ -37,5 +39,5 @@
   }
 </script>
 
-<style>
+<style scoped>
 </style>
