@@ -27,7 +27,7 @@
     </Scroll>
     <!-- 监听一个组件的原生事件时，给对应的事件加上native修饰符 -->
     <BackTop @click.native="backTop" v-show="isShowBackTop" />
-    <h1>首页</h1>
+    <!-- <h1>首页</h1> -->
 
   </div>
 </template>

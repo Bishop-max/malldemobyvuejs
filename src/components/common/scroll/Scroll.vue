@@ -13,6 +13,7 @@
    */
   //1.导入better-scroll
   import BScroll from 'better-scroll'
+import { setTimeout } from 'timers';
   export default {
     props:{
       //由父组件传入侦听类型
@@ -23,6 +24,12 @@
       pullUpLoad:{
         type:Boolean,
         default:false
+      },
+      data:{
+        type:Array,
+        default(){
+          return []
+        }
       }
     },
     data(){
@@ -73,6 +80,11 @@
       //scroll当前滚动的高度y
       getScrollY(){
         return this.scroll ? this.scroll.y : 0
+      }
+    },
+    watch:{
+      data(){
+        setTimeout(this.refresh,20)
       }
     }
   }

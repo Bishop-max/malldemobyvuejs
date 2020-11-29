@@ -16,7 +16,7 @@
     computed:{
       showImg(){
         //根据数据展示首页的goodslist或者推荐的goodslist
-        return this.goodsitem.image || this.goodsitem.show.img
+        return  this.goodsitem.img || this.goodsitem.image || this.goodsitem.show.img
       }
     },
     methods:{
