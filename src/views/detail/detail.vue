@@ -2,9 +2,9 @@
   <div id="detail">
     <DetailNavBar class="detail-nav" @titleClick="titleClick" ref="detailnav"/>
     <Scroll class="content" ref="detailScroll" :probe-type="3" @scroll="contentScroll">
-      <ul>
-      	<li v-for="item in this.$store.state.cartList">{{item}}</li>
-      </ul>
+      <!-- <ul>
+      	<li v-for="item in this.$store.state.cartList" >{{item}}</li>
+      </ul> -->
       <DetailSwiper :topImg="topImg"/>
       <DetailBaseInfo :goods="goods" />
       <DetailShopInfo :shop="shop"></DetailShopInfo>
@@ -209,7 +209,7 @@
       //   }
       // this.$bus.$on('imgLoad',this.itemImgListener)
       this.$bus.$on('detailImgLoad',debounce(() =>{
-        console.log(this.$refs.detailScroll.refresh)
+        // console.log(this.$refs.detailScroll.refresh)
         this.$refs.detailScroll.refresh()
       },500))
     },

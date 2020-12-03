@@ -31,6 +31,8 @@
         }else if(!this.$route.path.indexOf('/detail')){
           console.log("detailgoodslistitem")
           this.$bus.$emit('detailImgLoad')
+        }else if(!this.$route.path.indexOf('/category')){
+          this.$bus.$emit('categoryImgLoad')
         }
 
       },

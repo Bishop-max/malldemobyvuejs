@@ -29,6 +29,7 @@
   import {getCategory, getSubcategory, getCategoryDetail} from "network/category";
   // import {POP, SELL, NEW} from "utils/const";
   import {tabControlMixin} from "utils/mixin";
+  import {debounce} from "utils/utils";
 
   export default {
 		name: "Category",
@@ -52,6 +53,11 @@
     created() {
 		  // 1.请求分类数据
       this._getCategory()
+    },
+    mounted(){
+      this.$bus.$on('categoryImgLoad',debounce(() =>{
+          this.$refs.categoryScroll.refresh()
+        },300))
     },
     computed: {
 		  showSubcategory() {
@@ -102,6 +108,7 @@
 		      // 3.将获取的数据保存下来
 		      this.categoryData[this.currentIndex].categoryDetail[type] = res
           this.categoryData = {...this.categoryData}
+          console.log(res)
         })
       },
       /**
